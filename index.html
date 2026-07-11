@@ -222,7 +222,7 @@
         .matrix tr:nth-child(even) { background-color: #f9f9f9; }
         .badge-score { display: inline-block; padding: 2px 8px; font-weight: bold; border-radius: 4px; background: #e8f5e9; color: #2e7d32; }
 
-        /* DYNAMIC LOCK AND BLUR LAYER PARAMETERS */
+        /* ACCESS SECURITY STYLES */
         .locked-content {
             filter: blur(12px);
             pointer-events: none;
@@ -232,7 +232,7 @@
 
         .login-gate-container {
             position: absolute;
-            top: 480px; /* Positions perfectly right beneath the Course Parameters block */
+            top: 480px; 
             left: 50%;
             transform: translateX(-50%);
             width: 100%;
@@ -269,6 +269,12 @@
             transition: background 0.2s;
         }
         .login-submit-btn:hover { background-color: #112a44; }
+
+        /* ROLE-BASED ACCESS CONTROL SECTORS */
+        .admin-only-feature {
+            border: 2px dashed #e67e22 !important;
+            background: #fff9f5 !important;
+        }
     </style>
 </head>
 <body>
@@ -286,47 +292,48 @@
         </div>
     </header>
 
-    <!-- CONTENT DISPLAY CONTAINER EXCLUDED FROM LOCK -->
     <section class="hero">
         <div class="hero-container">
             <h1>Job Interview Mastery Course</h1>
             <div class="objective-card">
                 <strong>Course Parameters:</strong>
-                <p>In this course you are going to study the 19 most common questions you will go through in a job interview, what are your employer's expectations? And how to give good answers to these questions? Remember, you must not memorize your answers, if you did, you might lose fluency and the opportunity to create rapport with your interviewer because you don’t sound natural.[cite: 2]</p>
+                <p>In this course you are going to study the 19 most common questions you will go through in a job interview, what are your employer's expectations? And how to give good answers to these questions? Remember, you must not memorize your answers, if you did, you might lose fluency and the opportunity to create rapport with your interviewer because you don’t sound natural.</p>
             </div>
         </div>
     </section>
 
-    <!-- INTERACTIVE USER AUTHENTICATION PORTAL LAYOVER -->
     <div id="login-gate" class="login-gate-container">
-        <h3 style="color: var(--primary-blue); margin-bottom: 8px;">A&M Student Authentication</h3>
-        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Please sign in to unlock your full course guide and interview simulator workspace.</p>
-        <input type="email" id="student-email" placeholder="Corporate Student Email" class="login-input">
-        <input type="password" id="student-pass" placeholder="Access Password" class="login-input">
-        <button class="login-submit-btn" onclick="authenticateStudentUser()">Unlock Content</button>
+        <h3 style="color: var(--primary-blue); margin-bottom: 8px;">A&M Identity Management</h3>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Sign in with your personal credentials to open your designated workshop authorization level.</p>
+        <input type="text" id="student-user" placeholder="Assigned Username" class="login-input">
+        <input type="password" id="student-pass" placeholder="Password" class="login-input">
+        <button class="login-submit-btn" onclick="authenticateStudentUser()">Verify Credentials</button>
     </div>
 
-    <!-- PROTECTED VIEW PORTFOLIO HOUSING CONTENT BLUR ELEMENTS -->
     <div id="secure-content-wrapper" class="locked-content">
         
-        <!-- TAB 1: MASTER GUIDE -->
         <div id="view-guide" class="tab-view active-view">
             <div class="main-grid">
                 <div class="left-pane">
                     <div class="card">
                         <h2>Behavioral Interview Inquiries</h2>
-                        <p>Behavioral interview questions ask for specific examples of past behavior to predict on-the-job performance.[cite: 2] These questions evaluate experience, soft skills, and problem-solving capacities.[cite: 2]</p>
+                        <p>Behavioral interview questions ask for specific examples of past behavior to predict on-the-job performance. These questions evaluate experience, soft skills, and problem-solving capacities.</p>
                         
                         <div class="video-wrapper">
                             <iframe src="https://drive.google.com/file/d/1kg8A_Hj67UKdYCMlOILB8eqYBOLcHVQJ/preview" allow="autoplay" allowfullscreen></iframe>
                         </div>
 
                         <div class="star-grid">
-                            <div class="star-box"><h4>S</h4><strong>Situation</strong><p>Detail the exact situational challenge explicitly so the interviewer gets the entire context map clearly.[cite: 2]</p></div>
-                            <div class="star-box"><h4>T</h4><strong>Task</strong><p>Clarify exactly what tasks or roles you were explicitly assigned or expected to finish.[cite: 2]</p></div>
-                            <div class="star-box"><h4>A</h4><strong>Actions</strong><p>Break down your precise actions step-by-step to display professional capabilities.[cite: 2]</p></div>
-                            <div class="star-box"><h4>R</h4><strong>Results</strong><p>Provide specific positive, quantifiable metrics outlining the outcomes reached.[cite: 2]</p></div>
+                            <div class="star-box"><h4>S</h4><strong>Situation</strong><p>Detail the exact situational challenge explicitly so the interviewer gets the entire context map clearly.</p></div>
+                            <div class="star-box"><h4>T</h4><strong>Task</strong><p>Clarify exactly what tasks or roles you were explicitly assigned or expected to finish.</p></div>
+                            <div class="star-box"><h4>A</h4><strong>Actions</strong><p>Break down your precise actions step-by-step to display professional capabilities.</p></div>
+                            <div class="star-box"><h4>R</h4><strong>Results</strong><p>Provide specific positive, quantifiable metrics outlining the outcomes reached.</p></div>
                         </div>
+                    </div>
+
+                    <div id="admin-grading-notes" class="card admin-only-feature" style="display: none;">
+                        <h2 style="color: #e67e22; border-bottom-color: #ffe6d5;">★ Instructor Administration Parameters (Admin Only)</h2>
+                        <p><strong>Private Grading Protocol:</strong> When listening to audio submissions from standard student layers, ensure they are not exceeding 130 WPM. Check for the specific usage of the past simple markers during actions verification steps.</p>
                     </div>
 
                     <div class="card">
@@ -337,10 +344,10 @@
                     <div class="card">
                         <h2>Essential Phrase Bank Matrix</h2>
                         <div class="phrase-container">
-                            <div class="phrase-card">"I was responsible for [Task], which resulted in a [Percentage/Dollar Amount] increase..."[cite: 2]</div>
-                            <div class="phrase-card">"A specific example of this was when I..."[cite: 2]</div>
-                            <div class="phrase-card">"Early in my career, I struggled with [Weakness], but I’ve since implemented [System/Tool]..."[cite: 2]</div>
-                            <div class="phrase-card">"While I don’t have direct experience in [Tool], I am highly proficient in [Similar Tool]..."[cite: 2]</div>
+                            <div class="phrase-card">"I was responsible for [Task], which resulted in a [Percentage/Dollar Amount] increase..."</div>
+                            <div class="phrase-card">"A specific example of this was when I..."</div>
+                            <div class="phrase-card">"Early in my career, I struggled with [Weakness], but I’ve since implemented [System/Tool]..."</div>
+                            <div class="phrase-card">"While I don’t have direct experience in [Tool], I am highly proficient in [Similar Tool]..."</div>
                         </div>
                     </div>
                 </div>
@@ -349,16 +356,15 @@
                     <div class="card" style="position: sticky; top: 100px;">
                         <h2>Pre-Interview Protocol Checklist</h2>
                         <ul class="checklist">
-                            <li><strong>Read about the company:</strong> Focus on Goals, Current projects, and Policies.[cite: 2]</li>
-                            <li><strong>The Mirror Technique:</strong> Adapt dynamically to mirror the exact tempo and style of the interviewer.[cite: 2, 3]</li>
-                            <li><strong>Curate Personal Stories:</strong> Structure micro-narratives focused on resolving structural problems.[cite: 2]</li>
+                            <li><strong>Read about the company:</strong> Focus on Goals, Current projects, and Policies.</li>
+                            <li><strong>The Mirror Technique:</strong> Adapt dynamically to mirror the exact tempo and style of the interviewer.</li>
+                            <li><strong>Curate Personal Stories:</strong> Structure micro-narratives focused on resolving structural problems.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- TAB 2: SIMULATOR WORKSPACE -->
         <div id="view-practice" class="tab-view">
             <main class="practice-layout">
                 <div class="card">
@@ -378,12 +384,12 @@
                         </h3>
                         <table class="matrix">
                             <thead>
-                                <th>Category Cluster</th><th>Core Metrics Evaluation Profile[cite: 2]</th><th>Interactive Comments</th>
+                                <th>Category Cluster</th><th>Core Metrics Evaluation Profile</th><th>Interactive Comments</th>
                             </thead>
                             <tbody>
-                                <tr><td><strong>Pronunciation[cite: 2]</strong></td><td>Accents and Pace Tracking[cite: 2]</td><td>Excellent core phrasing delivery speed.</td></tr>
-                                <tr><td><strong>Vocabulary[cite: 2]</strong></td><td>Active Phrase and Verb Count[cite: 2]</td><td>Successfully matched professional metrics patterns.</td></tr>
-                                <tr><td><strong>Fluency[cite: 2]</strong></td><td>Continuous Pace Metrics[cite: 2]</td><td>Clear, natural speech rhythm; completely free of rigid text memorization flaws.[cite: 2, 3]</td></tr>
+                                <tr><td><strong>Pronunciation</strong></td><td>Accents and Pace Tracking</td><td>Excellent core phrasing delivery speed.</td></tr>
+                                <tr><td><strong>Vocabulary</strong></td><td>Active Phrase and Verb Count</td><td>Successfully matched professional metrics patterns.</td></tr>
+                                <tr><td><strong>Fluency</strong></td><td>Continuous Pace Metrics</td><td>Clear, natural speech rhythm; completely free of rigid text memorization flaws.</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -398,6 +404,15 @@
             { q: "What is your greatest professional strength?", e: "Highlights core competencies matching specifications.", a: "I have a proven track record optimizing system lifecycles..." },
             { q: "Tell me about a time when you demonstrated leadership.", e: "Requires clear STAR application explaining structural project adjustments.", a: "There were multiple students struggling with complex concepts; I formulated interactive study systems..." },
             { q: "Tell me about a time you failed.", e: "Evaluates recovery habits and continuous capability improvements.", a: "Early on, I encountered structural timeline setbacks, but engineered procedural frameworks to recover..." }
+        ];
+
+        // INTERNAL USER IDENTITY DATA SECURITY REGISTER
+        // Edit, add, or delete profiles from this array whenever you want to modify access!
+        const USER_DATABASE = [
+            { user: "alejandro_admin", pass: "AdminPass2026", role: "admin" },
+            { user: "student_john", pass: "JohnPass123", role: "standard" },
+            { user: "student_maria", pass: "MariaPass456", role: "standard" },
+            { user: "guest_user", pass: "Guest789", role: "standard" }
         ];
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -436,22 +451,34 @@
             }
         }
 
-        // UNLOCK CONTENT ACTIONS
+        // ROLE-BASED IDENTITY MANAGEMENT ROUTINES
         function authenticateStudentUser() {
-            const emailInput = document.getElementById('student-email').value;
-            const passInput = document.getElementById('student-pass').value;
+            const userInput = document.getElementById('student-user').value.trim();
+            const passInput = document.getElementById('student-pass').value.trim();
 
-            if (emailInput.trim() !== "" && passInput.trim() !== "") {
-                // Remove Blur Filter Layer Effect smoothly
+            // Check if credentials exist inside the USER_DATABASE register array
+            const matchedUser = USER_DATABASE.find(u => u.user === userInput && u.pass === passInput);
+
+            if (matchedUser) {
+                // Clear out structural blur layers smoothly
                 const contentBox = document.getElementById('secure-content-wrapper');
                 contentBox.classList.remove('locked-content');
                 contentBox.style.pointerEvents = "auto";
                 contentBox.style.userSelect = "auto";
 
-                // Hide Login Portal Widget completely
+                // Handle conditional role capabilities
+                if (matchedUser.role === "admin") {
+                    document.getElementById('admin-grading-notes').style.display = "block";
+                    alert("Welcome back Administrator! Full system features verified.");
+                } else {
+                    document.getElementById('admin-grading-notes').style.display = "none";
+                    alert(`Login Successful. Welcome to the workspace, ${matchedUser.user}!`);
+                }
+
+                // Close login overlay block interface
                 document.getElementById('login-gate').style.display = "none";
             } else {
-                alert("Please enter a valid student email and password to unlock the materials.");
+                alert("Access Denied! Invalid username or password sequence verified.");
             }
         }
 
