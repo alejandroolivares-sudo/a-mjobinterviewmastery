@@ -1,20 +1,424 @@
-# A&M English - Job Interview Mastery Web Platform
+HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Job Interview Mastery | A&M English</title>
+    <style>
+        :root {
+            --primary-color: #003366;    
+            --secondary-color: #008080;  
+            --light-bg: #f4f7f6;         
+            --text-color: #333333;       
+            --white: #ffffff;
+            --accent-orange: #ff6f61;   
+            --success-green: #2e7d32;
+        }
 
-This is an interactive web-based training platform designed to help students master job interviews conducted in English[cite: 2]. Built entirely using modern, responsive frontend frameworks, this site guides candidates away from rigid script memorization and focuses on developing natural fluency and professional rapport[cite: 2, 3].
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-## 🚀 Key Features
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
 
-*   **Interactive Main Guide:** Outlines the 19 most common interview questions using a strict 3-step hierarchy: The Question, The Explanation, and High-Quality Answer Examples[cite: 2].
-*   **The STAR Method Framework:** Integrates embedded multimedia guidance detailing how to properly structure situational responses (Situation, Task, Action, Result)[cite: 2].
-*   **Essential Phrase Bank:** Quick-access linguistic patterns to improve structural delivery, vocabulary choices, and professional phrasing[cite: 2].
-*   **Interactive Practice Simulator:** Built-in audio recording feature via the browser's MediaDevices API allowing students to speak, record, and playback their practice answers seamlessly.
-*   **Simulated HR Reviewer Feedback:** An evaluation rubric reflecting real HR recruiter standards—grading the user on Pronunciation, Vocabulary, Fluency, Grammar, and Phrasal alignment[cite: 2].
-*   **Actionable Pre-Interview Checklists:** Built-in career coaching modules teaching company research techniques and the physiological "Mirror Technique" for high-pressure scenarios[cite: 2, 3].
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-## 🛠️ Technology Stack
-*   **HTML5** (Semantic page structure)
-*   **CSS3** (Custom responsive grid design & corporate theme parameters)
-*   **Vanilla JavaScript** (Tab management and native browser Web Audio API implementation)
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
 
-## ⚠️ Hosting Requirements
-To ensure the **Audio Recording Feature** works correctly, this site **must be hosted over HTTPS**. Modern web browsers strictly block microphone access on insecure (HTTP) origins. Free automated HTTPS deployments are fully supported via GitHub Pages, Netlify, or Vercel.
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+        }
+
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            margin-left: 20px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+
+        nav button.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .hero-container { max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 2.2rem; margin-bottom: 10px; }
+
+        .tab-view { display: none; }
+        .tab-view.active-view { display: block; }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 900px) {
+            .main-container { grid-template-columns: 1fr; }
+        }
+
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 10px;
+        }
+
+        .simulator-layout {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .select-box {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 2px solid #ddd;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .recording-panel {
+            text-align: center;
+            background: #fdfdfd;
+            border: 2px dashed #ccc;
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .rec-btn {
+            background-color: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255, 111, 97, 0.3);
+            transition: all 0.2s;
+            margin-bottom: 15px;
+        }
+
+        .rec-btn.recording {
+            background-color: #d32f2f;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .feedback-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--white);
+        }
+
+        .feedback-table th, .feedback-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .feedback-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .verdict-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            background-color: #e8f5e9;
+            color: var(--success-green);
+            margin-top: 10px;
+        }
+
+        .step-block { margin-bottom: 20px; padding: 15px; border-radius: 6px; background-color: var(--light-bg); }
+        .step-title { font-weight: bold; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 5px; display: inline-block; padding: 2px 8px; border-radius: 4px; color: var(--white); }
+        .step-1 .step-title { background-color: #4a90e2; }
+        .step-2 .step-title { background-color: #f5a623; }
+        .step-3 .step-title { background-color: #7ed321; }
+        .question-text { font-size: 1.2rem; color: var(--primary-color); font-weight: 600; }
+        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 6px; margin-top: 15px; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .advice-list { list-style: none; }
+        .advice-list li { position: relative; padding-left: 25px; margin-bottom: 10px; }
+        .advice-list li::before { content: "✔"; position: absolute; left: 5px; color: var(--secondary-color); font-weight: bold; }
+        .phrase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .phrase-item { background: var(--light-bg); padding: 10px; border-radius: 4px; font-size: 0.9rem; border-left: 3px solid var(--secondary-color); }
+        .star-breakdown { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 15px; }
+        .star-letter { background: var(--primary-color); color: var(--white); padding: 12px; border-radius: 6px; text-align: center; }
+        .star-letter h4 { font-size: 1.3rem; margin-bottom: 5px; color: var(--accent-orange); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <div class="logo-placeholder"></div>
+                <span>A&M English</span>
+            </div>
+            <nav>
+                <button id="tab-guide" class="active" onclick="switchTab('guide')">Main Guide</button>
+                <button id="tab-practice" onclick="switchTab('practice')">Practice Simulator</button>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <h1 id="hero-title">English Job Interview Mastery</h1>
+        </div>
+    </section>
+
+    <div id="view-guide" class="tab-view active-view">
+        <main class="main-container">
+            <div class="content-left">
+                <div class="card">
+                    <h2>Behavioral Questions & The STAR Method</h2>
+                    <p>Behavioral interview questions ask for specific examples of past behavior to predict performance[cite: 2]. They usually start with phrases like <em>"Tell me about a time..."</em>[cite: 2].</p>
+                    
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="STAR Method" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="star-breakdown">
+                        <div class="star-letter"><h4>S</h4><strong>Situation</strong><br><small>What the context was[cite: 2].</small></div>
+                        <div class="star-letter"><h4>T</h4><strong>Task</strong><br><small>What you were asked to do[cite: 2].</small></div>
+                        <div class="star-letter"><h4>A</h4><strong>Action</strong><br><small>Step by step what you did[cite: 2].</small></div>
+                        <div class="star-letter"><h4>R</h4><strong>Result</strong><br><small>What the outcome was[cite: 2].</small></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Interview Guide</h2>
+                    <div class="step-container">
+                        <div class="step-block step-1">
+                            <span class="step-title">1. The Question</span>
+                            <div class="question-text">"What is your greatest professional strength?"[cite: 2]</div>
+                        </div>
+                        <div class="step-block step-2">
+                            <span class="step-title">2. The Explanation</span>
+                            <p>Employers look for technical and transferable skills matching the job specifications. Map this cleanly using structured beats instead of reading rigid scripts[cite: 2, 3].</p>
+                        </div>
+                        <div class="step-block step-3">
+                            <span class="step-title">3. Answer Examples</span>
+                            <p><em>"A specific example of this was when I was responsible for implementing new safety measures, which involved updating protocols and setting up several new systems[cite: 2]. It was challenging, however the end result was highly successful and I am very proud of how well it turned out[cite: 2]."</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Essential Phrase Bank</h2>
+                    <div class="phrase-grid">
+                        <div class="phrase-item">"I was responsible for [Task]..."[cite: 2]</div>
+                        <div class="phrase-item">"A specific example of this was when I..."[cite: 2]</div>
+                        <div class="phrase-item">"I have a proven track record in..."[cite: 2]</div>
+                        <div class="phrase-item">"I am proud of the end result."[cite: 2]</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-right">
+                <div class="card">
+                    <h2>Pre-Interview Advice</h2>
+                    <ul class="advice-list">
+                        <li><strong>Read about the company:</strong> Study goals, policies, and active initiatives[cite: 2].</li>
+                        <li><strong>The Mirror Technique:</strong> Adapt to the tone and physical energy of your interviewer[cite: 2, 3].</li>
+                        <li><strong>Don't Memorize Scripts:</strong> Keep execution authentic to build natural rapport[cite: 2, 3].</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="view-practice" class="tab-view">
+        <main class="simulator-layout">
+            <div class="card">
+                <h2>Interactive Interview Practice</h2>
+                <p style="margin-bottom: 15px;">Select a core question, record your response, and view your simulated HR feedback report immediately.</p>
+                
+                <label for="question-select"><strong>Choose an Interview Question:</strong></label>
+                <select id="question-select" class="select-box">
+                    <option value="strength">Question 1: What is your greatest professional strength?[cite: 2]</option>
+                    <option value="star">Question 2: Tell me about a time when you demonstrated leadership[cite: 3]</option>
+                </select>
+
+                <div class="recording-panel">
+                    <p style="font-weight: 600; margin-bottom: 10px;">Practice Speaking Your Answer Below:</p>
+                    <button id="record-btn" class="rec-btn" onclick="toggleRecording()">Start Recording</button>
+                    <div id="audio-container"></div>
+                </div>
+
+                <div id="feedback-panel" class="card" style="display:none; background-color: #fafbfc; border: 1px solid #e1e4e8;">
+                    <h3 style="color: var(--primary-color);">A&M English • Reviewer Feedback Report</h3>
+                    <div class="verdict-badge">HR Recruiter Verdict: Clear to Next Stage</div>
+                    
+                    <table class="feedback-table">
+                        <thead>
+                            <tr>
+                                <th>Criteria[cite: 2]</th>
+                                <th>Evaluation Notes[cite: 2]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pronunciation[cite: 2]</strong></td>
+                                <td>Good word-stress allocation. Check cadence pacing[cite: 2].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Vocabulary[cite: 2]</strong></td>
+                                <td>Effective use of active management verbs. Clean transition phrases[cite: 2].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fluency[cite: 2]</strong></td>
+                                <td>Strong, steady flow. Didn't sound stiff or memorized[cite: 2, 3].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Grammar[cite: 2]</strong></td>
+                                <td>Accurate usage of past simple structures for the Action phase[cite: 2].</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Phrases[cite: 2]</strong></td>
+                                <td>Successfully incorporated phrase bank properties ("I was responsible for...")[cite: 2].</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-view').forEach(view => view.classList.remove('active-view'));
+            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
+            
+            if(tabName === 'guide') {
+                document.getElementById('view-guide').classList.add('active-view');
+                document.getElementById('tab-guide').classList.add('active');
+            } else {
+                document.getElementById('view-practice').classList.add('active-view');
+                document.getElementById('tab-practice').classList.add('active');
+            }
+        }
+
+        let mediaRecorder;
+        let audioChunks = [];
+        let isRecording = false;
+
+        async function toggleRecording() {
+            const button = document.getElementById('record-btn');
+            const feedbackPanel = document.getElementById('feedback-panel');
+            const container = document.getElementById('audio-container');
+
+            if (!isRecording) {
+                try {
+                    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    mediaRecorder = new MediaRecorder(stream);
+                    audioChunks = [];
+
+                    mediaRecorder.ondataavailable = event => {
+                        audioChunks.push(event.data);
+                    };
+
+                    mediaRecorder.onstop = () => {
+                        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                        const audioUrl = URL.createObjectURL(audioBlob);
+                        
+                        container.innerHTML = '';
+                        const audio = document.createElement('audio');
+                        audio.src = audioUrl;
+                        audio.controls = true;
+                        container.appendChild(audio);
+                        
+                        feedbackPanel.style.display = 'block';
+                    };
+
+                    mediaRecorder.start();
+                    isRecording = true;
+                    button.textContent = "Stop Recording";
+                    button.classList.add('recording');
+                } catch (err) {
+                    alert("Microphone access denied or unsupported by browser: " + err);
+                }
+            } else {
+                mediaRecorder.stop();
+                isRecording = false;
+                button.textContent = "Start Recording";
+                button.classList.remove('recording');
+            }
+        }
+    </script>
+</body>
+</html>
