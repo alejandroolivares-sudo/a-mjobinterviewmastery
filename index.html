@@ -170,6 +170,26 @@
         .explanation-text { background: #fffcf7; padding: 10px 15px; border-radius: 6px; font-style: italic; margin-bottom: 5px; }
         .answer-text { background: #f9f9f9; padding: 12px 15px; border-radius: 6px; border-top: 2px solid #ddd; }
 
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: var(--card-shadow);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         .phrase-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -264,17 +284,14 @@
             <div class="left-pane">
                 <div class="card">
                     <h2>Behavioral Interview Inquiries</h2>
-                    <p>Behavioral interview questions are inquiries that try to predict a candidate’s future on-the-job performance by asking for specific examples of past behavior[cite: 2]. These questions are trying to identify experience, soft skills, and problem-solving capacity, usually starting with a phrase such as "Tell me about a time..." to assess how a candidate handles challenges, conflict, and teamwork[cite: 2].</p>
+                    <p>Behavioral interview questions are inquiries that try to predict a candidate’s future on-the-job performance by asking for specific examples of past behavior.[cite: 2] These questions are trying to identify experience, soft skills, and problem-solving capacity, usually starting with a phrase such as "Tell me about a time..." to assess how a candidate handles challenges, conflict, and teamwork.[cite: 2]</p>
                     
                     <h3 style="margin-top:20px; color:var(--primary-blue);">The STAR Structural Approach</h3>
-                    <p>One of the best approaches to handle this question is the STAR method[cite: 2]. In simple terms is a way to structure your answer so it can paint the picture of the situation, what you were asked to do, your actions, and the result that you got[cite: 2].</p>
+                    <p>One of the best approaches to handle this question is the STAR method.[cite: 2] In simple terms is a way to structure your answer so it can paint the picture of the situation, what you were asked to do, your actions, and the result that you got.[cite: 2]</p>
                     
-                    <!-- REPLACED PLACEHOLDER WITH YOUR EXPLICIT UPLOADED VIDEO SOURCE ASSET -->
-                    <div style="margin: 20px 0; background: #000; border-radius: 8px; overflow: hidden; box-shadow: var(--card-shadow);">
-                        <video width="100%" height="auto" controls style="display: block;">
-                            <source src="A&M Start method.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                    <!-- DYNAMICALLY LOADED EMBED FRAME WITH YOUR CUSTOM UPLOADED GOOGLE DRIVE RESOURCE LINK -->
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1kg8A_Hj67UKdYCMlOILB8eqYBOLcHVQJ/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
 
                     <div class="star-grid">
@@ -294,25 +311,25 @@
                             <div class="lbl-q element-label">1. The Question</div>
                             <div class="question-title">What is your greatest professional strength?[cite: 2]</div>
                             <div class="lbl-e element-label">2. The Explanation</div>
-                            <div class="explanation-text">Highlights core professional competencies. Match this safely to technical features of the requested role without reading from static memory maps[cite: 2, 3].</div>
+                            <div class="explanation-text">Highlights core professional competencies. Match this safely to technical features of the requested role without reading from static memory maps.[cite: 2, 3]</div>
                             <div class="lbl-a element-label">3. Answer Examples</div>
-                            <div class="answer-text">"I have a proven track record in optimizing project lifecycles[cite: 2]. A specific example of this was when I was responsible for implementing the new safety measures..."[cite: 2]</div>
+                            <div class="answer-text">"I have a proven track record in optimizing project lifecycles.[cite: 2] A specific example of this was when I was responsible for implementing the new safety measures..."[cite: 2]</div>
                         </div>
 
                         <div class="qa-block">
-                            <div class="lbl-q element-label">1. The Question</div>
+                            <div class="lbl-q element-label">2. The Question</div>
                             <div class="question-title">Tell me about a time when you demonstrated leadership.[cite: 3]</div>
                             <div class="lbl-e element-label">2. The Explanation</div>
-                            <div class="explanation-text">Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits[cite: 2, 3].</div>
+                            <div class="explanation-text">Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.[cite: 2, 3]</div>
                             <div class="lbl-a element-label">3. Answer Examples</div>
-                            <div class="answer-text">"There were several students in my math class who were struggling with difficult concepts[cite: 3]. I was asked by my math teacher to start an after school session to assist the other students[cite: 3]. I created a comprehensive study guide and demonstrated the best methods for solving problems[cite: 3]. Our class average for the national exam was the highest it had been in over ten years.[cite: 3]"</div>
+                            <div class="answer-text">"There were several students in my math class who were struggling with difficult concepts.[cite: 3] I was asked by my math teacher to start an after school session to assist the other students.[cite: 3] I created a comprehensive study guide and demonstrated the best methods for solving problems.[cite: 3] Our class average for the national exam was the highest it had been in over ten years.[cite: 3]"</div>
                         </div>
 
                         <div class="qa-block">
-                            <div class="lbl-q element-label">1. The Question</div>
+                            <div class="lbl-q element-label">3. The Question</div>
                             <div class="question-title">Tell me about a time you failed.[cite: 3]</div>
                             <div class="lbl-e element-label">2. The Explanation</div>
-                            <div class="explanation-text">Assesses professional resiliency and the explicit capacity to extract core operational improvements from bad results[cite: 3].</div>
+                            <div class="explanation-text">Assesses professional resiliency and the explicit capacity to extract core operational improvements from bad results.[cite: 3]</div>
                             <div class="lbl-a element-label">3. Answer Examples</div>
                             <div class="answer-text">"Early in my career, I struggled with [Weakness], but I’ve since implemented [System/Tool] to manage it effectively and assure safe operational continuity.[cite: 2]"</div>
                         </div>
@@ -425,7 +442,7 @@
                             <tr>
                                 <td><strong>Fluency[cite: 2]</strong></td>
                                 <td>Pace Flow, Pause Distribution, Coherency Index[cite: 2]</td>
-                                <td>Strong continuous flow configuration. Did not replicate rigid memorized text errors[cite: 2, 3].</td>
+                                <td>Strong continuous flow configuration. Did not replicate rigid memorized text errors.[cite: 2, 3]</td>
                             </tr>
                             <tr>
                                 <td><strong>Grammar[cite: 2]</strong></td>
@@ -435,7 +452,7 @@
                             <tr>
                                 <td><strong>Phrases[cite: 2]</strong></td>
                                 <td>Track Record Phrasings, Professional Sentence Starters[cite: 2]</td>
-                                <td>Successfully hit target anchor phrasings ("I was responsible for...", "The end result was...")[cite: 2].</td>
+                                <td>Successfully hit target anchor phrasings ("I was responsible for...", "The end result was...").[cite: 2]</td>
                             </tr>
                         </tbody>
                     </table>
