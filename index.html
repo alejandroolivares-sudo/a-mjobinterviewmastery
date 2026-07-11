@@ -12,6 +12,7 @@
             --text-dark: #2c3e50;       
             --white: #ffffff;
             --card-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            --mp-blue: #009ee3;
         }
 
         * {
@@ -65,17 +66,27 @@
             background: none;
             border: none;
             color: var(--text-dark);
-            margin-left: 20px;
+            margin-left: 10px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
-            padding: 8px 16px;
+            padding: 8px 14px;
             border-radius: 6px;
             transition: all 0.3s;
         }
 
         nav button.active {
             background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        #btn-payment {
+            border: 2px solid var(--mp-blue);
+            color: var(--mp-blue);
+            margin-left: 20px;
+        }
+        #btn-payment.active {
+            background-color: var(--mp-blue);
             color: var(--white);
         }
 
@@ -211,7 +222,9 @@
 
         .action-btn {
             background: #e74c3c; color: white; border: none; padding: 14px 35px; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; margin-bottom: 15px;
+            transition: all 0.2s; text-decoration: none; display: inline-block;
         }
+        .action-btn:hover { opacity: 0.9; transform: translateY(-2px); }
         .action-btn.active-rec { background: #2c3e50; }
 
         audio { width: 100%; margin-top: 15px; }
@@ -270,11 +283,35 @@
         }
         .login-submit-btn:hover { background-color: #112a44; }
 
-        /* ROLE-BASED ACCESS CONTROL SECTORS */
         .admin-only-feature {
             border: 2px dashed #e67e22 !important;
             background: #fff9f5 !important;
         }
+        
+        /* PRICING CARD STYLES */
+        .pricing-card {
+            border: 2px solid var(--mp-blue);
+            border-radius: 10px;
+            padding: 40px;
+            background: #fafbfc;
+            max-width: 450px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .btn-mp {
+            background-color: var(--mp-blue);
+            color: white;
+            text-decoration: none;
+            width: 100%;
+            display: block;
+            padding: 14px 0;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s;
+        }
+        .btn-mp:hover { opacity: 0.9; transform: translateY(-2px); }
     </style>
 </head>
 <body>
@@ -288,6 +325,7 @@
             <nav>
                 <button id="btn-guide" class="active" onclick="toggleViews('guide')">Course Material</button>
                 <button id="btn-practice" onclick="toggleViews('practice')">Simulator Workspace</button>
+                <button id="btn-payment" onclick="toggleViews('payment')">Enroll / Upgrade</button>
             </nav>
         </div>
     </header>
@@ -302,6 +340,7 @@
         </div>
     </section>
 
+    <!-- CENTRAL LOGIN SECURITY PORTAL MODULE -->
     <div id="login-gate" class="login-gate-container">
         <h3 style="color: var(--primary-blue); margin-bottom: 8px;">A&M Identity Management</h3>
         <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Sign in with your personal credentials to open your designated workshop authorization level.</p>
@@ -310,8 +349,10 @@
         <button class="login-submit-btn" onclick="authenticateStudentUser()">Verify Credentials</button>
     </div>
 
+    <!-- PROTECTED SYSTEM PLATFORM INTERFACE -->
     <div id="secure-content-wrapper" class="locked-content">
         
+        <!-- TAB 1: MASTER GUIDE -->
         <div id="view-guide" class="tab-view active-view">
             <div class="main-grid">
                 <div class="left-pane">
@@ -331,6 +372,7 @@
                         </div>
                     </div>
 
+                    <!-- ADMIN EXCLUSIVE FEATURE COMPONENT -->
                     <div id="admin-grading-notes" class="card admin-only-feature" style="display: none;">
                         <h2 style="color: #e67e22; border-bottom-color: #ffe6d5;">★ Instructor Administration Parameters (Admin Only)</h2>
                         <p><strong>Private Grading Protocol:</strong> When listening to audio submissions from standard student layers, ensure they are not exceeding 130 WPM. Check for the specific usage of the past simple markers during actions verification steps.</p>
@@ -365,6 +407,7 @@
             </div>
         </div>
 
+        <!-- TAB 2: SIMULATOR WORKSPACE -->
         <div id="view-practice" class="tab-view">
             <main class="practice-layout">
                 <div class="card">
@@ -384,7 +427,7 @@
                         </h3>
                         <table class="matrix">
                             <thead>
-                                <th>Category Cluster</th><th>Core Metrics Evaluation Profile</th><th>Interactive Comments</th>
+                                <tr><th>Category Cluster</th><th>Core Metrics Evaluation Profile</th><th>Interactive Comments</th></tr>
                             </thead>
                             <tbody>
                                 <tr><td><strong>Pronunciation</strong></td><td>Accents and Pace Tracking</td><td>Excellent core phrasing delivery speed.</td></tr>
@@ -397,10 +440,35 @@
             </main>
         </div>
 
+        <!-- TAB 3: MERCADO PAGO PAYMENT WORKSPACE -->
+        <div id="view-payment" class="tab-view">
+            <main class="practice-layout">
+                <div class="card" style="text-align: center;">
+                    <h2>Inscribite al Curso Completo</h2>
+                    <p style="color: #666; max-width: 600px; margin: 0 auto; margin-bottom: 20px;">Asegurá tu lugar para desbloquear las 19 preguntas interactivas, herramientas premium de evaluación de audio y soporte directo para tus simulacros de entrevista.</p>
+                    
+                    <div class="pricing-card">
+                        <h3 style="font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 5px;">$180.000 <span style="font-size: 1.1rem; color: #888; font-weight: normal;">ARS</span></h3>
+                        <p style="font-weight: bold; color: var(--mp-blue); margin-bottom: 20px;">Acceso Completo Premium</p>
+                        
+                        <ul class="checklist" style="text-align: left; max-width: 280px; margin: 0 auto 30px auto; font-size: 0.95rem;">
+                            <li>Acceso completo al simulador de voz</li>
+                            <li>Guía de respuestas para las 19 preguntas</li>
+                            <li>Banco de frases profesionales listo para usar</li>
+                            <li>Soporte de evaluación del instructor</li>
+                        </ul>
+                        
+                        <a href="https://mpago.la/1WnSE7c" target="_blank" class="btn-mp">Pagar con Mercado Pago</a>
+                        <p style="font-size: 0.8rem; color: #aaa; margin-top: 15px;">🔒 Procesado de forma segura por Mercado Pago.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
     </div>
 
     <script>
-       const fullCourseSyllabus = [
+        const fullCourseSyllabus = [
             { q: "What is your greatest professional strength?", e: "Highlights core professional competencies matching the role description specifications.", a: "I have a proven track record in optimizing project lifecycles. A specific example of this was when I was responsible for implementing new safety measures." },
             { q: "Tell me about a time when you demonstrated leadership.", e: "Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.", a: "There were several students in my math class who were struggling with difficult concepts. I was asked by my math teacher to start an after school session to assist the other students. I created a comprehensive study guide and demonstrated the best methods for solving problems. Our class average for the national exam was the highest it had been in over ten years." },
             { q: "Tell me about a time you failed.", e: "Assesses resiliency, accountability, and the capacity to extract core operational improvements from setbacks.", a: "Early in my career, I mismanaged a project timeline due to poor delegation. It was challenging, however the end result was that I learned to utilize digital tracking boards, and I have never missed a critical milestone since." },
@@ -421,8 +489,8 @@
             { q: "Tell me about yourself.", e: "An elevator pitch summarizing your professional past, key strengths, and future career path alignment.", a: "I have managed a large number of projects over the past four years, specializing in workflow automation. I excel at building structured frameworks from scratch, and I am looking to apply my experience to scale operations here." },
             { q: "Do you have any questions for us?", e: "Demonstrates intellectual curiosity, serious intent, and critical assessment skills as an equal partner.", a: "Yes, I am very curious about the specific milestones your team hopes to achieve with the upcoming scalability projects. What would success look like in the first 90 days for the person in this role?" }
         ];
+
         // INTERNAL USER IDENTITY DATA SECURITY REGISTER
-        // Edit, add, or delete profiles from this array whenever you want to modify access!
         const USER_DATABASE = [
             { user: "alejandro_admin", pass: "AdminPass2026", role: "admin" },
             { user: "student_john", pass: "JohnPass123", role: "standard" },
@@ -455,34 +523,27 @@
             });
         });
 
+        // Tab views logic
         function toggleViews(targetView) {
             document.querySelectorAll('.tab-view').forEach(view => view.classList.remove('active-view'));
             document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-            if(targetView === 'guide') {
-                document.getElementById('view-guide').classList.add('active-view');
-                document.getElementById('btn-guide').classList.add('active');
-            } else {
-                document.getElementById('view-practice').classList.add('active-view');
-                document.getElementById('btn-practice').classList.add('active');
-            }
+            
+            document.getElementById('view-' + targetView).classList.add('active-view');
+            document.getElementById('btn-' + targetView).classList.add('active');
         }
 
-        // ROLE-BASED IDENTITY MANAGEMENT ROUTINES
         function authenticateStudentUser() {
             const userInput = document.getElementById('student-user').value.trim();
             const passInput = document.getElementById('student-pass').value.trim();
 
-            // Check if credentials exist inside the USER_DATABASE register array
             const matchedUser = USER_DATABASE.find(u => u.user === userInput && u.pass === passInput);
 
             if (matchedUser) {
-                // Clear out structural blur layers smoothly
                 const contentBox = document.getElementById('secure-content-wrapper');
                 contentBox.classList.remove('locked-content');
                 contentBox.style.pointerEvents = "auto";
                 contentBox.style.userSelect = "auto";
 
-                // Handle conditional role capabilities
                 if (matchedUser.role === "admin") {
                     document.getElementById('admin-grading-notes').style.display = "block";
                     alert("Welcome back Administrator! Full system features verified.");
@@ -491,7 +552,6 @@
                     alert(`Login Successful. Welcome to the workspace, ${matchedUser.user}!`);
                 }
 
-                // Close login overlay block interface
                 document.getElementById('login-gate').style.display = "none";
             } else {
                 alert("Access Denied! Invalid username or password sequence verified.");
