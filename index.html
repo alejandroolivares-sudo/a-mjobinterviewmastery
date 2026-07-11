@@ -172,7 +172,7 @@
 
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%; 
             height: 0;
             overflow: hidden;
             background: #000;
@@ -278,6 +278,7 @@
         </div>
     </section>
 
+    <!-- SECTION 1: MAIN COURSE MATERIAL GUIDE -->
     <div id="view-guide" class="tab-view active-view">
         <div class="main-grid">
             
@@ -289,7 +290,6 @@
                     <h3 style="margin-top:20px; color:var(--primary-blue);">The STAR Structural Approach</h3>
                     <p>One of the best approaches to handle this question is the STAR method.[cite: 2] In simple terms is a way to structure your answer so it can paint the picture of the situation, what you were asked to do, your actions, and the result that you got.[cite: 2]</p>
                     
-                    <!-- DYNAMICALLY LOADED EMBED FRAME WITH YOUR CUSTOM UPLOADED GOOGLE DRIVE RESOURCE LINK -->
                     <div class="video-wrapper">
                         <iframe src="https://drive.google.com/file/d/1kg8A_Hj67UKdYCMlOILB8eqYBOLcHVQJ/preview" allow="autoplay" allowfullscreen></iframe>
                     </div>
@@ -307,56 +307,7 @@
                     <p style="margin-bottom: 20px;">Every question maps through the explicit 3-step hierarchy requested: Question, Explanation, and Answer Examples.</p>
                     
                     <div id="questions-wrapper">
-                        <div class="qa-block">
-                            <div class="lbl-q element-label">1. The Question</div>
-                            <div class="question-title">What is your greatest professional strength?[cite: 2]</div>
-                            <div class="lbl-e element-label">2. The Explanation</div>
-                            <div class="explanation-text">Highlights core professional competencies. Match this safely to technical features of the requested role without reading from static memory maps.[cite: 2, 3]</div>
-                            <div class="lbl-a element-label">3. Answer Examples</div>
-                            <div class="answer-text">"I have a proven track record in optimizing project lifecycles.[cite: 2] A specific example of this was when I was responsible for implementing the new safety measures..."[cite: 2]</div>
-                        </div>
-
-                        <div class="qa-block">
-                            <div class="lbl-q element-label">2. The Question</div>
-                            <div class="question-title">Tell me about a time when you demonstrated leadership.[cite: 3]</div>
-                            <div class="lbl-e element-label">2. The Explanation</div>
-                            <div class="explanation-text">Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.[cite: 2, 3]</div>
-                            <div class="lbl-a element-label">3. Answer Examples</div>
-                            <div class="answer-text">"There were several students in my math class who were struggling with difficult concepts.[cite: 3] I was asked by my math teacher to start an after school session to assist the other students.[cite: 3] I created a comprehensive study guide and demonstrated the best methods for solving problems.[cite: 3] Our class average for the national exam was the highest it had been in over ten years.[cite: 3]"</div>
-                        </div>
-
-                        <div class="qa-block">
-                            <div class="lbl-q element-label">3. The Question</div>
-                            <div class="question-title">Tell me about a time you failed.[cite: 3]</div>
-                            <div class="lbl-e element-label">2. The Explanation</div>
-                            <div class="explanation-text">Assesses professional resiliency and the explicit capacity to extract core operational improvements from bad results.[cite: 3]</div>
-                            <div class="lbl-a element-label">3. Answer Examples</div>
-                            <div class="answer-text">"Early in my career, I struggled with [Weakness], but I’ve since implemented [System/Tool] to manage it effectively and assure safe operational continuity.[cite: 2]"</div>
-                        </div>
-
-                        <script>
-                            const remainingQueries = [
-                                "What are your weaknesses?", "Why do you want to work here?", "Where do you see yourself in 5 years?",
-                                "Why should we hire you?", "Tell me about a time you dealt with a difficult client.", "What are your salary expectations?",
-                                "How do you manage workplace conflict?", "Describe a stressful scenario you overcame.", "What do you know about our company?",
-                                "Why did you leave your previous position?", "How do you handle tight deadlines?", "Tell me about a successful teamwork project.",
-                                "What systems do you use to stay organized?", "How do you handle fast structural changes?", "Do you have any questions for us?"
-                            ];
-                            const wrapper = document.getElementById('questions-wrapper');
-                            remainingQueries.forEach((q, index) => {
-                                const div = document.createElement('div');
-                                div.className = 'qa-block';
-                                div.innerHTML = `
-                                    <div class="lbl-q element-label">${index + 4}. The Question</div>
-                                    <div class="question-title">${q}</div>
-                                    <div class="lbl-e element-label">2. The Explanation</div>
-                                    <div class="explanation-text">Evaluates alignment against role expectations. Use specific metric stories instead of reading from memorized text maps.</div>
-                                    <div class="lbl-a element-label">3. Answer Examples</div>
-                                    <div class="answer-text">"While managing several projects over the years, I successfully resolved alternative variations of this issue by utilizing the core phrase bank properties..."</div>
-                                `;
-                                wrapper.appendChild(div);
-                            });
-                        </script>
+                        <!-- Questions 1-19 are mapped out below dynamically through continuous item arrays -->
                     </div>
                 </div>
 
@@ -395,6 +346,7 @@
         </div>
     </div>
 
+    <!-- SECTION 2: INTERACTIVE PRACTICE SIMULATOR WORKSPACE -->
     <div id="view-practice" class="tab-view">
         <main class="practice-layout">
             <div class="card">
@@ -403,9 +355,7 @@
                 
                 <label for="practice-select"><strong>Select Question Target for Evaluation:</strong></label>
                 <select id="practice-select" class="selector">
-                    <option value="1">Question 1: What is your greatest professional strength?[cite: 2]</option>
-                    <option value="2">Question 2: Tell me about a time when you demonstrated leadership.[cite: 3]</option>
-                    <option value="3">Question 3: Tell me about a time you failed.[cite: 3]</option>
+                    <!-- Loaded dynamically with all 19 entries below in the script to ensure 100% sync alignment -->
                 </select>
 
                 <div class="panel">
@@ -461,7 +411,60 @@
         </main>
     </div>
 
+    <!-- Core Runtime Dynamic Script Controllers -->
     <script>
+        // Data Registry containing all 19 questions, explicit explanations, and example responses
+        const fullCourseSyllabus = [
+            { q: "What is your greatest professional strength?", e: "Highlights core professional competencies matching the role description specifications.", a: "I have a proven track record in optimizing project lifecycles. A specific example of this was when I was responsible for implementing the new safety measures..." },
+            { q: "Tell me about a time when you demonstrated leadership.", e: "Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.", a: "There were several students in my math class who were struggling with difficult concepts. I was asked by my math teacher to start an after school session to assist the other students. I created a comprehensive study guide and demonstrated the best methods for solving problems. Our class average for the national exam was the highest it had been in over ten years." },
+            { q: "Tell me about a time you failed.", e: "Assesses professional resiliency and the explicit capacity to extract core operational improvements from bad results.", a: "Early in my career, I struggled with an administrative tracking task, but I’ve since implemented structured tools to manage it effectively and assure safe operational continuity." },
+            { q: "What are your weaknesses?", e: "Demonstrates high self-awareness and proactive measures taken toward self-improvement.", a: "Early in my career, I struggled with prioritizing competing deadlines, but I’ve since implemented digital timeline mapping tools to manage it effectively." },
+            { q: "Why do you want to work here?", e: "Evaluates company alignment based on pre-interview research parameters.", a: "Based on my research into your upcoming structural initiatives, your core goals align with my experience executing scalable workflows." },
+            { q: "Where do you see yourself in 5 years?", e: "Measures long-term professional ambition, growth patterns, and stability mindset.", a: "I plan to develop deep mastery within this operational landscape, eventually taking on higher management ownership of internal system tasks." },
+            { q: "Why should we hire you?", e: "A strategic summary matching your skills directly with their core professional needs.", a: "You should hire me because I have a proven track record delivering results on tight timelines, and I can step in and optimize your operational flow immediately." },
+            { q: "Tell me about a time you dealt with a difficult client.", e: "Shows problem-solving competence, empathy, and professional communication filters.", a: "A specific example was when a client faced delivery delays. I immediately set up a direct feedback call, resolved their concerns, and negotiated a better operational timeline." },
+            { q: "What are your salary expectations?", e: "Measures target profile values using researched industry benchmark scales.", a: "Based on my research regarding the current industry market trends and benefits for this explicit location context, my expectations fall between a competitive standard baseline." },
+            { q: "How do you manage workplace conflict?", e: "Shows conversational maturity and collaborative negotiation habits.", a: "I focus entirely on objective parameters. I set up open channels to understand conflicting viewpoints and find solutions that keep our project on track." },
+            { q: "Describe a stressful scenario you overcame.", e: "Evaluates poise and baseline strategy patterns under pressure.", a: "When an active production system experienced a fault near launch, I remained composed, isolated the variable with my team, and safely deployed a quick patch." },
+            { q: "What do you know about our company?", e: "Validates your proactive assignment execution before the call.", a: "I followed your recent announcements regarding upcoming structural changes, policies, and system updates, which truly captured my attention." },
+            { q: "Why did you leave your previous position?", e: "Frame this as a positive push toward growth rather than critique.", a: "I am looking to scale my capabilities into new challenges that match my growing track record managing complex project systems." },
+            { q: "How do you handle tight deadlines?", e: "Assesses time management habits and structural agility profiles.", a: "I look at the core deliverables, structure my time allocation dynamically, and break step-by-step tasks down to ensure we reach our target safely." },
+            { q: "Tell me about a successful teamwork project.", e: "Highlights cooperation mechanics and professional collaborative dynamics.", a: "We won a competitive corporate tender because our team mapped tasks to each person's core strengths, which resulted in a 15% increase in production output." },
+            { q: "What systems do you use to stay organized?", e: "Highlights structural routines and personal productivity models.", a: "I utilize a structured digital board framework alongside custom calendar tags to manage task tracking maps without losing sight of milestones." },
+            { q: "How do you handle fast structural changes?", e: "Measures adaptability, learning speed, and change management resilience.", a: "While I don't have direct experience in every legacy tool, I have a good grasp of core concepts and am a quick study with any new software ecosystem." },
+            { q: "Tell me about yourself.", e: "A professional summary that highlights your background, strengths, and future career path.", a: "I have managed a large number of projects over the years. I excel at building structured frameworks and am looking to apply my experience here." },
+            { q: "Do you have any questions for us?", e: "Demonstrates intellectual curiosity and critical assessment skills.", a: "Yes, I am very curious about the specific milestones your team hopes to achieve with the upcoming projects mentioned in your current objectives." }
+        ];
+
+        // Populate both the structural document view list and the selector options on startup
+        window.addEventListener('DOMContentLoaded', () => {
+            const listWrapper = document.getElementById('questions-wrapper');
+            const dropdownSelect = document.getElementById('practice-select');
+
+            fullCourseSyllabus.forEach((item, index) => {
+                const count = index + 1;
+                
+                // 1. Inject into Guide Layout Tab
+                const qaDiv = document.createElement('div');
+                qaDiv.className = 'qa-block';
+                qaDiv.innerHTML = `
+                    <div class="lbl-q element-label">${count}. The Question</div>
+                    <div class="question-title">${item.q}</div>
+                    <div class="lbl-e element-label">2. The Explanation</div>
+                    <div class="explanation-text">${item.e}</div>
+                    <div class="lbl-a element-label">3. Answer Examples</div>
+                    <div class="answer-text"><em>"${item.a}"</em></div>
+                `;
+                listWrapper.appendChild(qaDiv);
+
+                // 2. Inject into Practice Dropdown List Selector
+                const opt = document.createElement('option');
+                opt.value = count;
+                opt.textContent = `Question ${count}: ${item.q}`;
+                dropdownSelect.appendChild(opt);
+            });
+        });
+
         function toggleViews(targetView) {
             document.querySelectorAll('.tab-view').forEach(view => view.classList.remove('active-view'));
             document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
