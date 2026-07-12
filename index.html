@@ -249,6 +249,7 @@
         .matrix tr:nth-child(even) { background-color: #f9f9f9; }
         .badge-score { display: inline-block; padding: 2px 8px; font-weight: bold; border-radius: 4px; background: #e8f5e9; color: #2e7d32; }
 
+        /* CALENDLY ELEMENTS */
         .calendly-wrapper {
             width: 100%;
             height: 700px;
@@ -256,6 +257,34 @@
             border-radius: 10px;
             background: var(--white);
             box-shadow: var(--card-shadow);
+            display: none;
+        }
+        .calendly-wrapper.active-frame {
+            display: block;
+        }
+
+        .calendar-selector-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+
+        .cal-toggle-btn {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .cal-toggle-btn.active-toggle {
+            background-color: var(--primary-blue);
+            color: var(--white);
         }
 
         /* ACCESS SECURITY STYLES */
@@ -468,10 +497,16 @@
             </main>
         </div>
 
-        <!-- TAB 3: CALENDLY SCHEDULING INTERFACE WORKSPACE -->
+        <!-- TAB 3: CALENDLY SCHEDULING INTERFACE WORKSPACE (TEACHERS NAMED) -->
         <div id="view-booking" class="tab-view">
             <main class="practice-layout">
-                <iframe src="https://calendly.com/alejandro-olivares-am-englishgroup/new-meeting" class="calendly-wrapper"></iframe>
+                <div class="calendar-selector-container">
+                    <button id="btn-cal1" class="cal-toggle-btn active-toggle" onclick="switchCalendar(1)">Teacher A: Alejandro Olivares</button>
+                    <button id="btn-cal2" class="cal-toggle-btn" onclick="switchCalendar(2)">Teacher B: Manuel Rivero</button>
+                </div>
+                
+                <iframe id="frame-cal1" src="https://calendly.com/alejandro-olivares-am-englishgroup/new-meeting" class="calendly-wrapper active-frame"></iframe>
+                <iframe id="frame-cal2" src="https://calendly.com/manuel-rivy-am-englishgroup/new-meeting" class="calendly-wrapper"></iframe>
             </main>
         </div>
 
@@ -505,7 +540,7 @@
     <script>
         const fullCourseSyllabus = [
             { q: "What is your greatest professional strength?", e: "Highlights core professional competencies matching the role description specifications.", a: "I have a proven track record in optimizing project lifecycles. A specific example of this was when I was responsible for implementing new safety measures." },
-            { q: "Tell me about a time when you demonstrated leadership.", e: "Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.", a: "There were several students in my math class who were struggling with difficult concepts. I was asked by my math teacher to start an after school session to assist the other students. I created a comprehensive study guide and demonstrated the best methods for solving problems. Our class average for the national exam was the highest it had been in over ten years." },
+            { q: "Tell me about a time when you demonstrated leadership.", e: "Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.", a: "There were several students in my math class who were struggling with difficult concepts. I was asked by my math teacher to start an after school session to assist the other students. I created a comprehensive study guide and demonstrated the best methods for solving problems. Our class average for the national exam was the highest it had been in over tens years." },
             { q: "Tell me about a time you failed.", e: "Assesses resiliency, accountability, and the capacity to extract core operational improvements from setbacks.", a: "Early in my career, I mismanaged a project timeline due to poor delegation. It was challenging, however the end result was that I learned to utilize digital tracking boards, and I have never missed a critical milestone since." },
             { q: "What are your weaknesses?", e: "Demonstrates high self-awareness and proactive professional measures taken toward self-improvement.", a: "Early in my career, I struggled with public speaking, which made presenting data difficult. However, I joined a public speaking workshop and practiced regularly, and I’ve got a good grasp of delivering clear presentations now." },
             { q: "Why do you want to work here?", e: "Evaluates company alignment, personal motivation, and proactive pre-interview research parameters.", a: "I have followed your recent announcements regarding your new upcoming scalability projects. Your target goals align perfectly with my background, and I am highly motivated to contribute to this expansion." },
@@ -557,7 +592,6 @@
             });
         });
 
-        // FIXED AND SECURED NAVIGATION LOGIC
         function toggleViews(targetView) {
             document.querySelectorAll('.tab-view').forEach(view => view.classList.remove('active-view'));
             document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
@@ -567,6 +601,14 @@
             
             if(selectedView) selectedView.classList.add('active-view');
             if(selectedBtn) selectedBtn.classList.add('active');
+        }
+
+        function switchCalendar(calIndex) {
+            document.querySelectorAll('.calendly-wrapper').forEach(frame => frame.classList.remove('active-frame'));
+            document.querySelectorAll('.cal-toggle-btn').forEach(btn => btn.classList.remove('active-toggle'));
+            
+            document.getElementById('frame-cal' + calIndex).classList.add('active-frame');
+            document.getElementById('btn-cal' + calIndex).classList.add('active-toggle');
         }
 
         function authenticateStudentUser() {
