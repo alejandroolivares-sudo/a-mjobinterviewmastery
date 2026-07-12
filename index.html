@@ -167,6 +167,22 @@
             padding: 15px;
         }
 
+        /* INFOGRAPHIC IMAGE CONTAINER STYLES */
+        .infographic-container {
+            width: 100%;
+            text-align: center;
+            margin: 25px 0 10px 0;
+            padding-top: 15px;
+            border-top: 2px solid #f4f7f6;
+        }
+
+        .infographic-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
         .qa-block {
             margin-bottom: 30px;
             border-left: 4px solid #ddd;
@@ -428,6 +444,11 @@
                             <div class="star-box"><h4>A</h4><strong>Actions</strong><p>Break down your precise actions step-by-step to display professional capabilities.</p></div>
                             <div class="star-box"><h4>R</h4><strong>Results</strong><p>Provide specific positive, quantifiable metrics outlining the outcomes reached.</p></div>
                         </div>
+
+                        <!-- THE IMAGE TAG IS NOW STABLE AND ASSIGNED HERE -->
+                        <div class="infographic-container">
+                            <img src="star-method.png" alt="Mastering the Behavioral Interview: The S.T.A.R. Method" class="infographic-img">
+                        </div>
                     </div>
 
                     <div id="admin-grading-notes" class="card admin-only-feature" style="display: none;">
@@ -497,7 +518,7 @@
             </main>
         </div>
 
-        <!-- TAB 3: CALENDLY SCHEDULING INTERFACE WORKSPACE (TEACHERS NAMED) -->
+        <!-- TAB 3: CALENDLY SCHEDULING INTERFACE WORKSPACE -->
         <div id="view-booking" class="tab-view">
             <main class="practice-layout">
                 <div class="calendar-selector-container">
@@ -540,7 +561,7 @@
     <script>
         const fullCourseSyllabus = [
             { q: "What is your greatest professional strength?", e: "Highlights core professional competencies matching the role description specifications.", a: "I have a proven track record in optimizing project lifecycles. A specific example of this was when I was responsible for implementing new safety measures." },
-            { q: "Tell me about a time when you demonstrated leadership.", e: "Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.", a: "There were several students in my math class who were struggling with difficult concepts. I was asked by my math teacher to start an after school session to assist the other students. I created a comprehensive study guide and demonstrated the best methods for solving problems. Our class average for the national exam was the highest it had been in over tens years." },
+            { q: "Tell me about a time when you demonstrated leadership.", e: "Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.", a: "There were several students in my math class who were struggling with difficult concepts. I was asked by my math teacher to start an after school session to assist the other students. I created a comprehensive study guide and demonstrated the best methods for solving problems. Our class average for the national exam was the highest it had been in over ten years." },
             { q: "Tell me about a time you failed.", e: "Assesses resiliency, accountability, and the capacity to extract core operational improvements from setbacks.", a: "Early in my career, I mismanaged a project timeline due to poor delegation. It was challenging, however the end result was that I learned to utilize digital tracking boards, and I have never missed a critical milestone since." },
             { q: "What are your weaknesses?", e: "Demonstrates high self-awareness and proactive professional measures taken toward self-improvement.", a: "Early in my career, I struggled with public speaking, which made presenting data difficult. However, I joined a public speaking workshop and practiced regularly, and I’ve got a good grasp of delivering clear presentations now." },
             { q: "Why do you want to work here?", e: "Evaluates company alignment, personal motivation, and proactive pre-interview research parameters.", a: "I have followed your recent announcements regarding your new upcoming scalability projects. Your target goals align perfectly with my background, and I am highly motivated to contribute to this expansion." },
