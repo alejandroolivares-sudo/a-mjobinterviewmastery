@@ -140,6 +140,21 @@
             border-bottom: 3px solid var(--light-bg);
         }
 
+        /* CUSTOM NOTICE SIGN STYLES */
+        .info-notice-sign {
+            background-color: #ebf5ff;
+            border-left: 5px solid #2980b9;
+            color: #1c3d5a;
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
         .star-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -350,7 +365,6 @@
         </div>
     </section>
 
-    <!-- CENTRAL LOGIN SECURITY PORTAL MODULE -->
     <div id="login-gate" class="login-gate-container">
         <h3 style="color: var(--primary-blue); margin-bottom: 8px;">A&M Identity Management</h3>
         <p style="font-size: 0.9rem; color: #666; margin-bottom: 20px;">Sign in with your personal credentials to open your designated workshop authorization level.</p>
@@ -359,13 +373,16 @@
         <button class="login-submit-btn" onclick="authenticateStudentUser()">Verify Credentials</button>
     </div>
 
-    <!-- PROTECTED SYSTEM PLATFORM INTERFACE -->
     <div id="secure-content-wrapper" class="locked-content">
         
-        <!-- TAB 1: MASTER GUIDE -->
         <div id="view-guide" class="tab-view active-view">
             <div class="main-grid">
                 <div class="left-pane">
+                    
+                    <div class="info-notice-sign">
+                        💡 To practice specific questions tailored to your desired role, please book a class and share a sample job posting.
+                    </div>
+
                     <div class="card">
                         <h2>Behavioral Interview Inquiries</h2>
                         <p>Behavioral interview questions ask for specific examples of past behavior to predict on-the-job performance. These questions evaluate experience, soft skills, and problem-solving capacities.</p>
@@ -382,7 +399,6 @@
                         </div>
                     </div>
 
-                    <!-- ADMIN EXCLUSIVE FEATURE COMPONENT -->
                     <div id="admin-grading-notes" class="card admin-only-feature" style="display: none;">
                         <h2 style="color: #e67e22; border-bottom-color: #ffe6d5;">★ Instructor Administration Parameters (Admin Only)</h2>
                         <p><strong>Private Grading Protocol:</strong> When listening to audio submissions from standard student layers, ensure they are not exceeding 130 WPM. Check for the specific usage of the past simple markers during actions verification steps.</p>
@@ -417,191 +433,8 @@
             </div>
         </div>
 
-        <!-- TAB 2: SIMULATOR WORKSPACE (RECORDING FEATURE RE-INTEGRATED) -->
         <div id="view-practice" class="tab-view">
             <main class="practice-layout">
                 <div class="card">
                     <h2>Interactive Vocal Training Simulator</h2>
                     <select id="practice-select" class="selector"></select>
-
-                    <div class="panel">
-                        <p style="font-weight:700; margin-bottom:15px;">Insert your recorded answer here:</p>
-                        <button id="rec-control" class="action-btn" onclick="executeVoiceCapture()">Start Recording</button>
-                        <div id="playback-output"></div>
-                    </div>
-
-                    <div id="evaluation-card" class="card" style="display:none; background: #fafbfc; border: 1px solid #ddd;">
-                        <h3 style="color:var(--primary-blue); display:flex; justify-content:space-between; align-items:center;">
-                            <span>Answer Feedback Matrix</span>
-                            <span class="badge-score">Status: Profile Generated</span>
-                        </h3>
-                        <table class="matrix">
-                            <thead>
-                                <tr><th>Category Cluster</th><th>Core Metrics Evaluation Profile</th><th>Interactive Comments</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr><td><strong>Pronunciation</strong></td><td>Accents and Pace Tracking</td><td>Excellent core phrasing delivery speed.</td></tr>
-                                <tr><td><strong>Vocabulary</strong></td><td>Active Phrase and Verb Count</td><td>Successfully matched professional metrics patterns.</td></tr>
-                                <tr><td><strong>Fluency</strong></td><td>Continuous Pace Metrics</td><td>Clear, natural speech rhythm; completely free of rigid text memorization flaws.</td></tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </main>
-        </div>
-
-        <!-- TAB 3: CALENDLY SCHEDULING INTERFACE WORKSPACE -->
-        <div id="view-booking" class="tab-view">
-            <main class="practice-layout">
-                <iframe src="https://calendly.com/alejandro-olivares-am-englishgroup/new-meeting" class="calendly-wrapper"></iframe>
-            </main>
-        </div>
-
-        <!-- TAB 4: MERCADO PAGO PAYMENT WORKSPACE -->
-        <div id="view-payment" class="tab-view">
-            <main class="practice-layout">
-                <div class="card" style="text-align: center;">
-                    <h2>Inscribite al Curso Completo</h2>
-                    <p style="color: #666; max-width: 600px; margin: 0 auto; margin-bottom: 20px;">Asegurá tu lugar para desbloquear las 19 preguntas interactivas, herramientas premium de evaluación de audio y soporte directo para tus simulacros de entrevista.</p>
-                    
-                    <div class="pricing-card">
-                        <h3 style="font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 5px;">$180.000 <span style="font-size: 1.1rem; color: #888; font-weight: normal;">ARS</span></h3>
-                        <p style="font-weight: bold; color: var(--mp-blue); margin-bottom: 20px;">Acceso Completo Premium</p>
-                        
-                        <ul class="checklist" style="text-align: left; max-width: 280px; margin: 0 auto 30px auto; font-size: 0.95rem;">
-                            <li>Acceso completo al simulador de voz</li>
-                            <li>Guía de respuestas para las 19 preguntas</li>
-                            <li>Banco de frases profesionales listo para usar</li>
-                            <li>Soporte de evaluación del instructor</li>
-                        </ul>
-                        
-                        <a href="https://mpago.la/1WnSE7c" target="_blank" class="btn-mp">Pagar con Mercado Pago</a>
-                        <p style="font-size: 0.8rem; color: #aaa; margin-top: 15px;">🔒 Procesado de forma segura por Mercado Pago.</p>
-                    </div>
-                </div>
-            </main>
-        </div>
-
-    </div>
-
-    <script>
-        const fullCourseSyllabus = [
-            { q: "What is your greatest professional strength?", e: "Highlights core professional competencies matching the role description specifications.", a: "I have a proven track record in optimizing project lifecycles. A specific example of this was when I was responsible for implementing new safety measures." },
-            { q: "Tell me about a time when you demonstrated leadership.", e: "Requires an active breakdown using the explicit STAR framework rules to present actionable project control habits.", a: "There were several students in my math class who were struggling with difficult concepts. I was asked by my math teacher to start an after school session to assist the other students. I created a comprehensive study guide and demonstrated the best methods for solving problems. Our class average for the national exam was the highest it had been in over ten years." },
-            { q: "Tell me about a time you failed.", e: "Assesses resiliency, accountability, and the capacity to extract core operational improvements from setbacks.", a: "Early in my career, I mismanaged a project timeline due to poor delegation. It was challenging, however the end result was that I learned to utilize digital tracking boards, and I have never missed a critical milestone since." },
-            { q: "What are your weaknesses?", e: "Demonstrates high self-awareness and proactive professional measures taken toward self-improvement.", a: "Early in my career, I struggled with public speaking, which made presenting data difficult. However, I joined a public speaking workshop and practiced regularly, and I’ve got a good grasp of delivering clear presentations now." },
-            { q: "Why do you want to work here?", e: "Evaluates company alignment, personal motivation, and proactive pre-interview research parameters.", a: "I have followed your recent announcements regarding your new upcoming scalability projects. Your target goals align perfectly with my background, and I am highly motivated to contribute to this expansion." },
-            { q: "Where do you see yourself in 5 years?", e: "Measures long-term professional ambition, loyalty, growth patterns, and stability mindset within the firm.", a: "I plan to develop deep mastery within this operational landscape, taking on higher project ownership and eventually moving into a strategic management role where I can lead larger teams." },
-            { q: "Why should we hire you?", e: "A strategic summary matching your unique value proposition directly with their urgent corporate needs.", a: "You should hire me because I have a proven track record delivering results on tight timelines. I deal with high-pressure environments efficiently, and I can step in and optimize your current workflow immediately." },
-            { q: "Tell me about a time you dealt with a difficult client.", e: "Shows emotional intelligence, conflict resolution competence, empathy, and professional communication filters.", a: "A specific example was when an upset client faced system delivery delays. I listened to their concerns, took ownership of the delay, and provided daily updates. I successfully managed the relationship, and they ultimately renewed their annual contract." },
-            { q: "What are your salary expectations?", e: "Measures target profile values using researched industry benchmark scales while maintaining negotiation leverage.", a: "Based on my research regarding current market trends for this explicit role and location, my expectations fall within a standard competitive range. However, I am open to discussing a package that reflects the full scope of responsibilities." },
-            { q: "How do you manage workplace conflict?", e: "Shows conversational maturity, collaboration mechanics, and professional compromise habits under tension.", a: "I focus entirely on objective parameters rather than personal emotions. I arrange a private conversation to find common ground, ensuring the project milestones stay safely on track." },
-            { q: "Describe a stressful scenario you overcame.", e: "Evaluates poise, mental clarity, and baseline problem-solving strategies under pressure.", a: "When an active production system experienced a fault right before a major client launch, I remained composed. I isolated the software variable with my team, deployed a hotfix, and safely launched on time." },
-            { q: "What do you know about our company?", e: "Validates your proactive preparation, interest level, and understanding of the company's core mission.", a: "I know that your company is a market leader in automated workflows, and I noticed your recent initiative focused on cross-border operations. This emphasis on innovation is precisely why I want to bring my skill set here." },
-            { q: "Why did you leave your previous position?", e: "Frames career progression as a positive push toward growth rather than a critique of past employers.", a: "I am grateful for the experience at my previous company, but I am looking to scale my capabilities into new, complex challenges that match my growing track record managing larger workflows." },
-            { q: "How do you handle tight deadlines?", e: "Assesses time management filters, structural agility profiles, and priority optimization.", a: "I look at the core deliverables, structure my time allocation dynamically, and break step-by-step tasks down. I also delegate secondary objectives when necessary to ensure we reach our target safely." },
-            { q: "Tell me about a successful teamwork project.", e: "Highlights cooperation mechanics, professional collaborative dynamics, and credit sharing.", a: "We successfully delivered a massive data migration project ahead of schedule because we mapped assignments explicitly to each person's core strengths, which resulted in a 15% increase in team efficiency." },
-            { q: "What systems do you use to stay organized?", e: "Highlights structural routines, daily professional disciplines, and personal productivity models.", a: "I utilize a structured digital kanban board alongside custom calendar tags to manage task tracking maps without losing sight of daily milestones." },
-            { q: "How do you handle fast structural changes?", e: "Measures adaptability, continuous learning speed, resilience, and change management capabilities.", a: "I view structural changes as opportunities to learn. While I don't always have direct experience in a new tool immediately, I have a good grasp of foundational structures and am a quick study with new software ecosystems." },
-            { q: "Tell me about yourself.", e: "An elevator pitch summarizing your professional past, key strengths, and future career path alignment.", a: "I have managed a large number of projects over the past four years, specializing in workflow automation. I excel at building structured frameworks from scratch, and I am looking to apply my experience to scale operations here." },
-            { q: "Do you have any questions for us?", e: "Demonstrates intellectual curiosity, serious intent, and critical assessment skills as an equal partner.", a: "Yes, I am very curious about the specific milestones your team hopes to achieve with the upcoming scalability projects. What would success look like in the first 90 days for the person in this role?" }
-        ];
-
-        const USER_DATABASE = [
-            { user: "alejandro_admin", pass: "AdminPass2026", role: "admin" },
-            { user: "student_john", pass: "JohnPass123", role: "standard" },
-            { user: "student_maria", pass: "MariaPass456", role: "standard" },
-            { user: "guest_user", pass: "Guest789", role: "standard" },
-            { user: "manurivy", pass: "#Franca2522", role: "admin" }
-        ];
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const listWrapper = document.getElementById('questions-wrapper');
-            const dropdownSelect = document.getElementById('practice-select');
-
-            fullCourseSyllabus.forEach((item, index) => {
-                const count = index + 1;
-                const qaDiv = document.createElement('div');
-                qaDiv.className = 'qa-block';
-                qaDiv.innerHTML = `
-                    <div class="lbl-q element-label">${count}. The Question</div>
-                    <div class="question-title">${item.q}</div>
-                    <div class="lbl-e element-label">2. The Explanation</div>
-                    <div class="explanation-text">${item.e}</div>
-                    <div class="lbl-a element-label">3. Answer Examples</div>
-                    <div class="answer-text"><em>"${item.a}"</em></div>
-                `;
-                listWrapper.appendChild(qaDiv);
-
-                const opt = document.createElement('option');
-                opt.value = count; opt.textContent = `Question ${count}: ${item.q}`;
-                dropdownSelect.appendChild(opt);
-            });
-        });
-
-        function toggleViews(targetView) {
-            document.querySelectorAll('.tab-view').forEach(view => view.classList.remove('active-view'));
-            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById('view-' + targetView).classList.add('active-view');
-            document.getElementById('btn-' + targetView).classList.add('active');
-        }
-
-        function authenticateStudentUser() {
-            const userInput = document.getElementById('student-user').value.trim();
-            const passInput = document.getElementById('student-pass').value.trim();
-
-            const matchedUser = USER_DATABASE.find(u => u.user === userInput && u.pass === passInput);
-
-            if (matchedUser) {
-                const contentBox = document.getElementById('secure-content-wrapper');
-                contentBox.classList.remove('locked-content');
-                contentBox.style.pointerEvents = "auto";
-                contentBox.style.userSelect = "auto";
-
-                if (matchedUser.role === "admin") {
-                    document.getElementById('admin-grading-notes').style.display = "block";
-                    alert("Welcome back Administrator! Full system features verified.");
-                } else {
-                    document.getElementById('admin-grading-notes').style.display = "none";
-                    alert(`Login Successful. Welcome to the workspace, ${matchedUser.user}!`);
-                }
-
-                document.getElementById('login-gate').style.display = "none";
-            } else {
-                alert("Access Denied! Invalid username or password sequence verified.");
-            }
-        }
-
-        let captureEngine; let storageBlocks = []; let stateFlag = false;
-        async function executeVoiceCapture() {
-            const trigger = document.getElementById('rec-control');
-            const dataBox = document.getElementById('evaluation-card');
-            const playbackSlot = document.getElementById('playback-output');
-
-            if (!stateFlag) {
-                try {
-                    const captureChannel = await navigator.mediaDevices.getUserMedia({ audio: true });
-                    captureEngine = new MediaRecorder(captureChannel);
-                    storageBlocks = [];
-                    captureEngine.ondataavailable = packet => { storageBlocks.push(packet.data); };
-                    captureEngine.onstop = () => {
-                        const targetBlob = new Blob(storageBlocks, { type: 'audio/wav' });
-                        playbackSlot.innerHTML = '';
-                        const playerInstance = document.createElement('audio');
-                        playerInstance.src = URL.createObjectURL(targetBlob);
-                        playerInstance.controls = true;
-                        playbackSlot.appendChild(playerInstance);
-                        dataBox.style.display = 'block';
-                    };
-                    captureEngine.start(); stateFlag = true;
-                    trigger.textContent = "Stop Recording"; trigger.classList.add('active-rec');
-                } catch (e) { alert("Microphone access initialization issue: " + e); }
-            } else {
-                captureEngine.stop(); stateFlag = false;
-                trigger.textContent = "Start Recording"; trigger.classList.remove('active-rec');
-            }
-        }
-    </script>
-</body>
-</html>
