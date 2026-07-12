@@ -214,8 +214,27 @@
         }
 
         .practice-layout { max-width: 1000px; margin: 30px auto; padding: 0 20px; }
+        .selector { width: 100%; padding: 12px; font-size: 1rem; border-radius: 6px; margin-bottom: 25px; border: 2px solid #ddd; }
         
-        /* CALENDLY EMBED WRAPPER CONFIGURATION */
+        .panel {
+            text-align: center; padding: 40px; border: 3px dashed #ccc; background: #fafbfc; border-radius: 10px; margin-bottom: 25px;
+        }
+
+        .action-btn {
+            background: #e74c3c; color: white; border: none; padding: 14px 35px; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; margin-bottom: 15px;
+            transition: all 0.2s; text-decoration: none; display: inline-block;
+        }
+        .action-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        .action-btn.active-rec { background: #2c3e50; }
+
+        audio { width: 100%; margin-top: 15px; }
+
+        .matrix { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .matrix th, .matrix td { border: 1px solid #ddd; padding: 12px; text-align: left; font-size: 0.95rem; }
+        .matrix th { background-color: var(--primary-blue); color: white; }
+        .matrix tr:nth-child(even) { background-color: #f9f9f9; }
+        .badge-score { display: inline-block; padding: 2px 8px; font-weight: bold; border-radius: 4px; background: #e8f5e9; color: #2e7d32; }
+
         .calendly-wrapper {
             width: 100%;
             height: 700px;
@@ -314,7 +333,8 @@
             </div>
             <nav>
                 <button id="btn-guide" class="active" onclick="toggleViews('guide')">Course Material</button>
-                <button id="btn-practice" onclick="toggleViews('practice')">Book a Class</button>
+                <button id="btn-practice" onclick="toggleViews('practice')">Simulator Workspace</button>
+                <button id="btn-booking" onclick="toggleViews('booking')">Book a Class</button>
                 <button id="btn-payment" onclick="toggleViews('payment')">Enroll / Upgrade</button>
             </nav>
         </div>
@@ -397,15 +417,47 @@
             </div>
         </div>
 
-        <!-- TAB 2: CALENDLY SCHEDULING INTERFACE WORKSPACE -->
+        <!-- TAB 2: SIMULATOR WORKSPACE (RECORDING FEATURE RE-INTEGRATED) -->
         <div id="view-practice" class="tab-view">
             <main class="practice-layout">
-                <!-- PASTE YOUR EXACT CALENDLY LINK IN THE SRC VALUE BELOW -->
+                <div class="card">
+                    <h2>Interactive Vocal Training Simulator</h2>
+                    <select id="practice-select" class="selector"></select>
+
+                    <div class="panel">
+                        <p style="font-weight:700; margin-bottom:15px;">Insert your recorded answer here:</p>
+                        <button id="rec-control" class="action-btn" onclick="executeVoiceCapture()">Start Recording</button>
+                        <div id="playback-output"></div>
+                    </div>
+
+                    <div id="evaluation-card" class="card" style="display:none; background: #fafbfc; border: 1px solid #ddd;">
+                        <h3 style="color:var(--primary-blue); display:flex; justify-content:space-between; align-items:center;">
+                            <span>Answer Feedback Matrix</span>
+                            <span class="badge-score">Status: Profile Generated</span>
+                        </h3>
+                        <table class="matrix">
+                            <thead>
+                                <tr><th>Category Cluster</th><th>Core Metrics Evaluation Profile</th><th>Interactive Comments</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Pronunciation</strong></td><td>Accents and Pace Tracking</td><td>Excellent core phrasing delivery speed.</td></tr>
+                                <tr><td><strong>Vocabulary</strong></td><td>Active Phrase and Verb Count</td><td>Successfully matched professional metrics patterns.</td></tr>
+                                <tr><td><strong>Fluency</strong></td><td>Continuous Pace Metrics</td><td>Clear, natural speech rhythm; completely free of rigid text memorization flaws.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- TAB 3: CALENDLY SCHEDULING INTERFACE WORKSPACE -->
+        <div id="view-booking" class="tab-view">
+            <main class="practice-layout">
                 <iframe src="https://calendly.com/alejandro-olivares-am-englishgroup/new-meeting" class="calendly-wrapper"></iframe>
             </main>
         </div>
 
-        <!-- TAB 3: MERCADO PAGO PAYMENT WORKSPACE -->
+        <!-- TAB 4: MERCADO PAGO PAYMENT WORKSPACE -->
         <div id="view-payment" class="tab-view">
             <main class="practice-layout">
                 <div class="card" style="text-align: center;">
@@ -455,7 +507,6 @@
             { q: "Do you have any questions for us?", e: "Demonstrates intellectual curiosity, serious intent, and critical assessment skills as an equal partner.", a: "Yes, I am very curious about the specific milestones your team hopes to achieve with the upcoming scalability projects. What would success look like in the first 90 days for the person in this role?" }
         ];
 
-        // INTERNAL USER IDENTITY DATA SECURITY REGISTER
         const USER_DATABASE = [
             { user: "alejandro_admin", pass: "AdminPass2026", role: "admin" },
             { user: "student_john", pass: "JohnPass123", role: "standard" },
@@ -481,10 +532,13 @@
                     <div class="answer-text"><em>"${item.a}"</em></div>
                 `;
                 listWrapper.appendChild(qaDiv);
+
+                const opt = document.createElement('option');
+                opt.value = count; opt.textContent = `Question ${count}: ${item.q}`;
+                dropdownSelect.appendChild(opt);
             });
         });
 
-        // Tab switching mechanics
         function toggleViews(targetView) {
             document.querySelectorAll('.tab-view').forEach(view => view.classList.remove('active-view'));
             document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
@@ -516,6 +570,36 @@
                 document.getElementById('login-gate').style.display = "none";
             } else {
                 alert("Access Denied! Invalid username or password sequence verified.");
+            }
+        }
+
+        let captureEngine; let storageBlocks = []; let stateFlag = false;
+        async function executeVoiceCapture() {
+            const trigger = document.getElementById('rec-control');
+            const dataBox = document.getElementById('evaluation-card');
+            const playbackSlot = document.getElementById('playback-output');
+
+            if (!stateFlag) {
+                try {
+                    const captureChannel = await navigator.mediaDevices.getUserMedia({ audio: true });
+                    captureEngine = new MediaRecorder(captureChannel);
+                    storageBlocks = [];
+                    captureEngine.ondataavailable = packet => { storageBlocks.push(packet.data); };
+                    captureEngine.onstop = () => {
+                        const targetBlob = new Blob(storageBlocks, { type: 'audio/wav' });
+                        playbackSlot.innerHTML = '';
+                        const playerInstance = document.createElement('audio');
+                        playerInstance.src = URL.createObjectURL(targetBlob);
+                        playerInstance.controls = true;
+                        playbackSlot.appendChild(playerInstance);
+                        dataBox.style.display = 'block';
+                    };
+                    captureEngine.start(); stateFlag = true;
+                    trigger.textContent = "Stop Recording"; trigger.classList.add('active-rec');
+                } catch (e) { alert("Microphone access initialization issue: " + e); }
+            } else {
+                captureEngine.stop(); stateFlag = false;
+                trigger.textContent = "Start Recording"; trigger.classList.remove('active-rec');
             }
         }
     </script>
